@@ -3,7 +3,8 @@
  - pip install requests
  - pip install pandas
  - pip install openpyxl
- - pip install python-dotenv
+ - pip install xlwt
+ - pip install aiohttp
 
 # env
 API_URL=

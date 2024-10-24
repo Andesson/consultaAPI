@@ -1,15 +1,14 @@
 import pandas as pd
+from datetime import datetime
+import os
 
-def export_to_excel(data, sheet_name="data"):
+async def save_to_excel(data, sheet_name):
     if not data:
         print("No data to export.")
         return
+    date_str = datetime.now().strftime("%d%m%Y")
+    file_name = f"{sheet_name}_{date_str}.xlsx"
+    print(f"Saving to {file_name}")
 
-    if isinstance(data, list) and all(isinstance(item, dict) for item in data):
-        keys = data[0].keys()
-        df = pd.DataFrame(data)
-        file_name = f"{sheet_name}_{pd.Timestamp.now().strftime('%Y%m%d_%H%M%S')}.xlsx"
-        df.to_excel(file_name, index=False)
-        print(f"Data exported successfully to {file_name}.")
-    else:
-        print("Invalid data format for export. Expected a list of dictionaries.")
+    df = pd.DataFrame(data)
+    df.to_excel(file_name, index=False, sheet_name=sheet_name)

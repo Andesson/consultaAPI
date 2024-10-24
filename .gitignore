@@ -35,4 +35,5 @@ dmypy.json
 *.pyo
 *.pyd
 
+*.xls
 *.xlsx
