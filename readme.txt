@@ -5,6 +5,7 @@
  - pip install openpyxl
  - pip install xlwt
  - pip install aiohttp
+ - pip install pyexcelerate
 
 # env
 API_URL=

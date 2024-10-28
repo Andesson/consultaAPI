@@ -1,7 +1,7 @@
 from infrastructure.env_reader import get_sheet_name
 from infrastructure.api_implementation import APIImplementation
-#from infrastructure.excel_exporter import save_to_excel
 from infrastructure.xlsx_exporter import save_to_excel
+#from infrastructure.excel_exporter import save_to_excel
 from infrastructure.env_reader import (
     get_api_url,
     get_api_url_param_1,
@@ -12,6 +12,7 @@ from infrastructure.env_reader import (
     get_api_username,
     get_api_password,
 )
+from model.field_mapper import FieldMapper
 
 class APIService:
     def __init__(self):
@@ -73,12 +74,12 @@ class APIService:
         api1_url = get_api_url()
         last_segment_api1 = api1_url.split('/')[-1].split('?')[0]
         sheet_name_api1 = f"{get_sheet_name()}_{last_segment_api1}"
-        await save_to_excel(combined_data, sheet_name_api1)
+        await save_to_excel(combined_data, sheet_name_api1, FieldMapper.get_field_mapping_api1())
 
         combined_data2 = await self.fetch_data_from_api2()
         api2_url = get_api_url2()
         last_segment_api2 = api2_url.split('/')[-1].split('?')[0]
         sheet_name_api2 = f"{get_sheet_name()}_{last_segment_api2}"
-        await save_to_excel(combined_data2, sheet_name_api2)
+        await save_to_excel(combined_data2, sheet_name_api2, FieldMapper.get_field_mapping_api2())
 
         return combined_data, combined_data2

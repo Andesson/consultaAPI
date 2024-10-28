@@ -1,14 +1,21 @@
-import pandas as pd
+from pyexcelerate import Workbook
 from datetime import datetime
-import os
 
-async def save_to_excel(data, sheet_name):
+async def save_to_excel(data, sheet_name, field_mapping):
     if not data:
         print("No data to export.")
         return
+
     date_str = datetime.now().strftime("%d%m%Y")
-    file_name = f"{sheet_name}_{date_str}.xlsx"
+    file_name = f"{sheet_name}_{date_str}.xls"
     print(f"Saving to {file_name}")
 
-    df = pd.DataFrame(data)
-    df.to_excel(file_name, index=False, sheet_name=sheet_name)
+    headers = list(field_mapping.values())
+    rows = [[entry.get(field, "") for field in field_mapping.keys()] for entry in data]
+    data_for_excel = [headers] + rows
+
+    wb = Workbook()
+    wb.new_sheet(sheet_name, data=data_for_excel)
+    wb.save(file_name)
+
+    print(f"Dados salvos no arquivo: {file_name}")
