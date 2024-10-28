@@ -1,5 +1,5 @@
 import asyncio
-from application.api_service import APIService
+from service.api_service import APIService
 
 async def main():
     service = APIService()
