@@ -1,7 +1,7 @@
 from infrastructure.env_reader import get_sheet_name
 from infrastructure.api_implementation import APIImplementation
-from infrastructure.xlsx_exporter import save_to_excel
-#from infrastructure.excel_exporter import save_to_excel
+#from infrastructure.xlsx_exporter import save_to_excel
+from infrastructure.excel_exporter import save_to_excel
 from infrastructure.env_reader import (
     get_api_url,
     get_api_url_param_1,
