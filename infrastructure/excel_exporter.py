@@ -10,7 +10,7 @@ async def save_to_excel(data, sheet_name, field_mapping):
         data = list(unique_data)
 
         date_str = datetime.now().strftime("%d%m%Y")
-        file_name = f"{sheet_name}_{date_str}.xls"
+        file_name = f"{sheet_name}.xls"
         print(f"Saving to {file_name}")
 
         headers = list(field_mapping.values())

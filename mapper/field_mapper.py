@@ -1,6 +1,6 @@
 class FieldMapper:
     @staticmethod
-    def get_field_mapping_api1():
+    def get_field_mapping_inc():
         return {
             "sys_class_name": "Tipo de tarefa",
             "number": "Número",
@@ -38,7 +38,7 @@ class FieldMapper:
         }
 
     @staticmethod
-    def get_field_mapping_api2():
+    def get_field_mapping_req():
         return {
             "sys_class_name": "Tipo de tarefa",
             "number": "Número",

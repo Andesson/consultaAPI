@@ -6,7 +6,7 @@ class APIImplementation:
         self.username = username
         self.password = password
 
-    async def fetch_data(self, params):
+    async def get_data_from_api(self, params):
         url = f"{self.base_url}{params}"
         async with aiohttp.ClientSession() as session:
             async with session.get(url, auth=aiohttp.BasicAuth(self.username, self.password)) as response:
